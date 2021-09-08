@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS `mst_country`;
 /*--- mst_country table ---*/
 CREATE TABLE `mst_country` (
   `country_id` bigint NOT NULL AUTO_INCREMENT,
-  `country_code` varchar(16) NOT NULL,
+  `country_code` varchar(15) NOT NULL,
   `country_name` varchar(255) NOT NULL,
   PRIMARY KEY (`country_id`),
   UNIQUE KEY `uk_country_code` (`country_code`),
@@ -32,7 +32,7 @@ UNLOCK TABLES;
 /*--- mst_state table ---*/
 CREATE TABLE `mst_state` (
   `state_id` bigint NOT NULL AUTO_INCREMENT,
-  `state_code` varchar(16) DEFAULT NULL,
+  `state_code` varchar(15) DEFAULT NULL,
   `state_name` varchar(255) NOT NULL,
   `country_id` bigint NOT NULL,
   PRIMARY KEY (`state_id`),
@@ -86,7 +86,7 @@ UNLOCK TABLES;
 /*--- mst_board table ---*/
 CREATE TABLE `mst_board` (
   `board_id` bigint NOT NULL AUTO_INCREMENT,
-  `board_short_name` varchar(16) NOT NULL,
+  `board_short_name` varchar(15) NOT NULL,
   `board_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`board_id`),
   UNIQUE KEY `uk_board_short_name` (`board_short_name`),
@@ -100,7 +100,7 @@ UNLOCK TABLES;
 /*--- mst_level table ---*/
 CREATE TABLE `mst_level` (
   `level_id` bigint NOT NULL AUTO_INCREMENT,
-  `level_code` varchar(16) NOT NULL,
+  `level_code` varchar(15) NOT NULL,
   `level_description` varchar(63) DEFAULT NULL,
   PRIMARY KEY (`level_id`),
   UNIQUE KEY `uk_level_code` (`level_code`),
@@ -151,7 +151,8 @@ LOCK TABLES `mst_user` WRITE;
 INSERT INTO `mst_user` VALUES (1,1,'2021-09-02 12:18:20','$2a$14$gh4hfltUGwB315NieowSduN/jb6DQjBhMqsRx1YSS7YDNTrr8C/bC','dan'),
 								(2,1,'2021-09-02 12:18:22','$2a$14$VkFfuxZTTJzKc2B31PjHZeNwz.znGgUqh03UWY4fVDE0Fq7ffnc42','anirban'),
 								(3,1,'2021-09-02 12:18:24','$2a$14$qUEha8IlzRzCqu0M6XNmsOFW3O1Q2tggjg3nrvYXeiKXUMU51pTha','admin'),
-								(4,1,'2021-09-02 12:18:26','$2a$14$E16Hc0v6miF2wtZ22IXSUOHT1cSzWycCvnprgVJrPC3087XXJV7Vi','manager');
+								(4,1,'2021-09-02 12:18:26','$2a$14$E16Hc0v6miF2wtZ22IXSUOHT1cSzWycCvnprgVJrPC3087XXJV7Vi','manager'),
+								(5,1,'2021-09-08 10:56:44','$2a$14$gh4hfltUGwB315NieowSduxn/JACaGJqdyclsSIjYmN95p596qgP6','Anoushka');
 UNLOCK TABLES;
 
 /*--- user_permission table ---*/
@@ -195,7 +196,7 @@ CREATE TABLE `student_profile` (
   `state_id` bigint DEFAULT NULL,
   `town_id` bigint DEFAULT NULL,
   `suburb_id` bigint DEFAULT NULL,
-  `profile_image_link` varchar(1027) DEFAULT NULL,
+  `profile_image_link` varchar(1023) DEFAULT NULL,
   PRIMARY KEY (`student_profile_id`),
   UNIQUE KEY `uk_email` (`email`),
   KEY `idx_first_name` (`first_name`),
