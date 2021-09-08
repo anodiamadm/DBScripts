@@ -19,8 +19,8 @@ CREATE TABLE `mst_country` (
   `country_code` varchar(16) NOT NULL,
   `country_name` varchar(255) NOT NULL,
   PRIMARY KEY (`country_id`),
-  UNIQUE KEY `country_code` (`country_code`),
-  UNIQUE KEY `country_name` (`country_name`),
+  UNIQUE KEY `uk_country_code` (`country_code`),
+  UNIQUE KEY `uk_country_name` (`country_name`),
   KEY `idx_country_code` (`country_code`),
   KEY `idx_country_name` (`country_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -73,7 +73,7 @@ CREATE TABLE `mst_suburb` (
   PRIMARY KEY (`suburb_id`),
   KEY `FK_suburb_town_id` (`town_id`),
   CONSTRAINT `FK_suburb_town_id` FOREIGN KEY (`town_id`) REFERENCES `mst_town` (`town_id`),
-  UNIQUE KEY `zip_code` (`zip_code`),
+  UNIQUE KEY `uk_zip_code` (`zip_code`),
   KEY `idx_suburb_name` (`suburb_name`),
   KEY `idx_zip_code` (`zip_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -89,7 +89,7 @@ CREATE TABLE `mst_board` (
   `board_short_name` varchar(16) NOT NULL,
   `board_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`board_id`),
-  UNIQUE KEY `board_short_name` (`board_short_name`),
+  UNIQUE KEY `uk_board_short_name` (`board_short_name`),
   KEY `idx_board_short_name` (`board_short_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 LOCK TABLES `mst_board` WRITE;
@@ -103,7 +103,7 @@ CREATE TABLE `mst_level` (
   `level_code` varchar(16) NOT NULL,
   `level_description` varchar(63) DEFAULT NULL,
   PRIMARY KEY (`level_id`),
-  UNIQUE KEY `level_code` (`level_code`),
+  UNIQUE KEY `uk_level_code` (`level_code`),
   KEY `idx_level_code` (`level_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 LOCK TABLES `mst_level` WRITE;
@@ -117,7 +117,7 @@ CREATE TABLE `mst_role` (
   `role_id` bigint NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) NOT NULL,
   PRIMARY KEY (`role_id`),
-  UNIQUE KEY `role_name` (`role_name`),
+  UNIQUE KEY `uk_role_name` (`role_name`),
   KEY `idx_role_name` (`role_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 LOCK TABLES `mst_role` WRITE;
@@ -129,7 +129,7 @@ CREATE TABLE `mst_permission` (
   `permission_id` bigint NOT NULL AUTO_INCREMENT,
   `permission_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`permission_id`),
-  UNIQUE KEY `permission_name` (`permission_name`),
+  UNIQUE KEY `uk_permission_name` (`permission_name`),
   KEY `idx_permission_name` (`permission_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 LOCK TABLES `mst_permission` WRITE;
