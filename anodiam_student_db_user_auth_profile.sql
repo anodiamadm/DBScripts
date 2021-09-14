@@ -68,7 +68,7 @@ UNLOCK TABLES;
 CREATE TABLE `mst_suburb` (
   `suburb_id` bigint NOT NULL AUTO_INCREMENT,
   `suburb_name` varchar(255) NOT NULL,
-  `zip_code` varchar(255) NOT NULL,
+  `zip_code` varchar(15) NOT NULL,
   `town_id` bigint NOT NULL,
   PRIMARY KEY (`suburb_id`),
   KEY `FK_suburb_town_id` (`town_id`),
