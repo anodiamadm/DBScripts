@@ -80,7 +80,7 @@ CREATE TABLE `mst_suburb` (
 LOCK TABLES `mst_suburb` WRITE;
 INSERT INTO `mst_suburb` VALUES (1,'Sydney CBD','2000',1),(2,'Bexley','2207',4),
 									(3,'Garia','700084',8),(4,'GPO','700001',8),(5,'Ballygunge','700019',8),(6,'Lake Gardens','700045',8),
-									(7,'Birivali','400091',8),(8,'Malad','400064',8),(9,'Central','400020',8),(10,'Juhu','400049',8);
+									(7,'Birivali','400091',13),(8,'Malad','400064',13),(9,'Central','400020',13),(10,'Juhu','400049',13);
 UNLOCK TABLES;
 
 /*--- mst_board table ---*/
