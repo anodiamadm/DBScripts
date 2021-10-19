@@ -138,61 +138,6 @@ LOCK TABLES `mst_permission` WRITE;
 INSERT INTO `mst_permission` VALUES (1,'ACCESS_TEST1'),(2,'ACCESS_TEST2');
 UNLOCK TABLES;
 
-/*--- student_profile table ---*/
-CREATE TABLE `student_profile` (
-  `student_profile_id` bigint NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255) DEFAULT NULL,
-  `middle_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `phone_number` varchar(255) DEFAULT NULL,
-  `guardians_first_name` varchar(255) DEFAULT NULL,
-  `guardians_last_name` varchar(255) DEFAULT NULL,
-  `guardians_email` varchar(255) DEFAULT NULL,
-  `guardians_phone_number` varchar(255) DEFAULT NULL,
-  `board_id` bigint DEFAULT NULL,
-  `level_id` bigint DEFAULT NULL,
-  `country_id` bigint DEFAULT NULL,
-  `state_id` bigint DEFAULT NULL,
-  `town_id` bigint DEFAULT NULL,
-  `suburb_id` bigint DEFAULT NULL,
-  `profile_image_link` varchar(1023) DEFAULT NULL,
-  PRIMARY KEY (`student_profile_id`),
-  UNIQUE KEY `uk_email` (`email`),
-  KEY `idx_first_name` (`first_name`),
-  KEY `idx_middle_name` (`middle_name`),
-  KEY `idx_last_name` (`last_name`),
-  KEY `idx_email` (`email`),
-  KEY `idx_phone_number` (`phone_number`),
-  KEY `idx_guardians_email` (`guardians_email`),
-  KEY `idx_guardians_phone_number` (`guardians_phone_number`),
-  KEY `idx_board_id` (`board_id`),
-  KEY `idx_level_id` (`level_id`),
-  KEY `idx_address` (`country_id`,`state_id`,`town_id`,`suburb_id`),
-  KEY `FK_board_id` (`board_id`),
-  CONSTRAINT `FK_board_id` FOREIGN KEY (`board_id`) REFERENCES `mst_board` (`board_id`),
-  KEY `FK_level_id` (`level_id`),
-  CONSTRAINT `FK_level_id` FOREIGN KEY (`level_id`) REFERENCES `mst_level` (`level_id`),
-  KEY `FK_country_id` (`country_id`),
-  CONSTRAINT `FK_country_id` FOREIGN KEY (`country_id`) REFERENCES `mst_country` (`country_id`),
-  KEY `FK_state_id` (`state_id`),
-  CONSTRAINT `FK_state_id` FOREIGN KEY (`state_id`) REFERENCES `mst_state` (`state_id`),
-  KEY `FK_town_id` (`town_id`),
-  CONSTRAINT `FK_town_id` FOREIGN KEY (`town_id`) REFERENCES `mst_town` (`town_id`),
-  KEY `FK_suburb_id` (`suburb_id`),
-  CONSTRAINT `FK_suburb_id` FOREIGN KEY (`suburb_id`) REFERENCES `mst_suburb` (`suburb_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-LOCK TABLES `student_profile` WRITE;
-INSERT INTO `student_profile` (`student_profile_id`,`first_name`,`middle_name`,`last_name`,`email`,`phone_number`,`guardians_first_name`,`guardians_last_name`,
-	`guardians_email`,`guardians_phone_number`,`board_id`,`level_id`,`country_id`,`state_id`,`town_id`,`suburb_id`,`profile_image_link`) VALUES (
-		1,'Dan','Kumar','Nandan','dan@anodiam.com','+919748407166','Baap','Reddy','baapdan@gmail.com','+1-5678912345',1,11,2,5,8,5,
-		'https://www.google.com/search?q=sample+images&sxsrf=AOaemvIqqXm8qgu90lgy5XCfkMlBbGW3xg:1630380654615&tbm=isch&source=iu&ictx=1&fir=NZ6unGWQe6yEPM%252CQCmqd078keo0SM%252C_&vet=1&usg=AI4_-kRz0iDy0H0c-AwN7kkwxRC7hyc6Zw&sa=X&ved=2ahUKEwjF7ZCeqdryAhW3wzgGHSKiAqMQ9QF6BAgQEAE#imgrc=NZ6unGWQe6yEPM'),
-		(2,'Anirban',NULL,'Chakrabarty','anirban@anodiam.com','+61470142229',NULL,NULL,NULL,NULL,2,10,2,6,13,8,
-		'https://www.google.com/search?q=mongoose+image&tbm=isch&source=iu&ictx=1&fir=Y99WqQTFftFOYM%252CQreZc1uj7GltDM%252C_&vet=1&usg=AI4_-kQ9NVlWOtQYbyPG7oMuYB9lRRR5Sg&sa=X&ved=2ahUKEwj0r-KH_unyAhXKbSsKHRa1BokQ9QF6BAgIEAE&biw=1366&bih=657#imgrc=Y99WqQTFftFOYM'),
-		(3,'Anoushka','','Rhuam','anoushkarhuam@Anodiam.com','+61405706206',NULL,NULL,'anirban@anodiam.com','+61470142229',2,10,2,6,13,8,
-		'https://www.google.com/search?q=mongoose+image&tbm=isch&source=iu&ictx=1&fir=Y99WqQTFftFOYM%252CQreZc1uj7GltDM%252C_&vet=1&usg=AI4_-kQ9NVlWOtQYbyPG7oMuYB9lRRR5Sg&sa=X&ved=2ahUKEwj0r-KH_unyAhXKbSsKHRa1BokQ9QF6BAgIEAE&biw=1366&bih=657#imgrc=Y99WqQTFftFOYM');
-UNLOCK TABLES;
-
 /*--- mst_user table ---*/
 CREATE TABLE `mst_user` (
   `user_id` bigint NOT NULL AUTO_INCREMENT,
@@ -200,19 +145,16 @@ CREATE TABLE `mst_user` (
   `date_created` datetime NOT NULL,
   `password` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `student_profile_id` bigint DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `uk_username` (`username`),
-  KEY `idx_username` (`username`),
-  KEY `FK_student_profile_id` (`student_profile_id`),
-  CONSTRAINT `FK_student_profile_id` FOREIGN KEY (`student_profile_id`) REFERENCES `student_profile` (`student_profile_id`)
+  KEY `idx_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 LOCK TABLES `mst_user` WRITE;
-INSERT INTO `mst_user` VALUES (1,1,'2021-09-02 12:18:20','$2a$14$gh4hfltUGwB315NieowSduN/jb6DQjBhMqsRx1YSS7YDNTrr8C/bC','dan',1),
-								(2,1,'2021-09-02 12:18:22','$2a$14$VkFfuxZTTJzKc2B31PjHZeNwz.znGgUqh03UWY4fVDE0Fq7ffnc42','anirban',2),
-								(3,1,'2021-09-02 12:18:24','$2a$14$qUEha8IlzRzCqu0M6XNmsOFW3O1Q2tggjg3nrvYXeiKXUMU51pTha','admin',NULL),
-								(4,1,'2021-09-02 12:18:26','$2a$14$E16Hc0v6miF2wtZ22IXSUOHT1cSzWycCvnprgVJrPC3087XXJV7Vi','manager',NULL),
-								(5,1,'2021-09-08 10:56:44','$2a$14$gh4hfltUGwB315NieowSduxn/JACaGJqdyclsSIjYmN95p596qgP6','Anoushka',3);
+INSERT INTO `mst_user` VALUES (1,1,'2021-09-02 12:18:20','$2a$14$gh4hfltUGwB315NieowSduN/jb6DQjBhMqsRx1YSS7YDNTrr8C/bC','dan'),
+								(2,1,'2021-09-02 12:18:22','$2a$14$VkFfuxZTTJzKc2B31PjHZeNwz.znGgUqh03UWY4fVDE0Fq7ffnc42','anirban'),
+								(3,1,'2021-09-02 12:18:24','$2a$14$qUEha8IlzRzCqu0M6XNmsOFW3O1Q2tggjg3nrvYXeiKXUMU51pTha','admin'),
+								(4,1,'2021-09-02 12:18:26','$2a$14$E16Hc0v6miF2wtZ22IXSUOHT1cSzWycCvnprgVJrPC3087XXJV7Vi','manager'),
+								(5,1,'2021-09-08 10:56:44','$2a$14$gh4hfltUGwB315NieowSduxn/JACaGJqdyclsSIjYmN95p596qgP6','Anoushka');
 UNLOCK TABLES;
 
 /*--- user_permission table ---*/
@@ -220,8 +162,8 @@ CREATE TABLE `user_permission` (
   `user_id` bigint NOT NULL,
   `permission_id` bigint NOT NULL,
   KEY `FK_permission_id` (`permission_id`),
-  KEY `FK_user_id` (`user_id`),
-  CONSTRAINT `FK_user_id` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`),
+  KEY `FK_user_id_01` (`user_id`),
+  CONSTRAINT `FK_user_id_01` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`),
   CONSTRAINT `FK_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `mst_permission` (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 LOCK TABLES `user_permission` WRITE;
@@ -239,6 +181,55 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 LOCK TABLES `user_role` WRITE;
 INSERT INTO `user_role` VALUES (1,1),(2,1),(3,2),(4,3);
+UNLOCK TABLES;
+
+/*--- student_profile table ---*/
+CREATE TABLE `student_profile` (
+  `student_profile_id` bigint NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) DEFAULT NULL,
+  `middle_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `guardians_first_name` varchar(255) DEFAULT NULL,
+  `guardians_last_name` varchar(255) DEFAULT NULL,
+  `guardians_email` varchar(255) DEFAULT NULL,
+  `guardians_phone_number` varchar(255) DEFAULT NULL,
+  `board_id` bigint DEFAULT NULL,
+  `level_id` bigint DEFAULT NULL,
+  `suburb_id` bigint DEFAULT NULL,
+  `profile_image_link` varchar(1023) DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`student_profile_id`),
+  UNIQUE KEY `uk_email` (`email`),
+  KEY `idx_first_name` (`first_name`),
+  KEY `idx_middle_name` (`middle_name`),
+  KEY `idx_last_name` (`last_name`),
+  KEY `idx_email` (`email`),
+  KEY `idx_phone_number` (`phone_number`),
+  KEY `idx_guardians_email` (`guardians_email`),
+  KEY `idx_guardians_phone_number` (`guardians_phone_number`),
+  KEY `idx_board_id` (`board_id`),
+  KEY `idx_level_id` (`level_id`),
+  KEY `idx_suburb_id` (`suburb_id`),
+  KEY `FK_board_id` (`board_id`),
+  CONSTRAINT `FK_board_id` FOREIGN KEY (`board_id`) REFERENCES `mst_board` (`board_id`),
+  KEY `FK_level_id` (`level_id`),
+  CONSTRAINT `FK_level_id` FOREIGN KEY (`level_id`) REFERENCES `mst_level` (`level_id`),
+  KEY `FK_suburb_id` (`suburb_id`),
+  CONSTRAINT `FK_suburb_id` FOREIGN KEY (`suburb_id`) REFERENCES `mst_suburb` (`suburb_id`),
+  KEY `FK_user_id` (`user_id`),
+  CONSTRAINT `FK_user_id` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+LOCK TABLES `student_profile` WRITE;
+INSERT INTO `student_profile` (`student_profile_id`,`first_name`,`middle_name`,`last_name`,`email`,`phone_number`,`guardians_first_name`,`guardians_last_name`,
+	`guardians_email`,`guardians_phone_number`,`board_id`,`level_id`,`suburb_id`,`profile_image_link`,`user_id`) VALUES (
+		1,'Dan','Kumar','Nandan','dan@anodiam.com','+919748407166','Baap','Reddy','baapdan@gmail.com','+1-5678912345',1,11,5,
+		'https://www.google.com', 1),
+		(2,'Anirban',NULL,'Chakrabarty','anirban@anodiam.com','+61470142229',NULL,NULL,NULL,NULL,2,10,8,
+		'https://www.google.com', 2),
+		(3,'Anoushka','','Rhuam','anoushkarhuam@Anodiam.com','+61405706206',NULL,NULL,'anirban@anodiam.com','+61470142229',2,10,8,
+		'https://www.google.com', 5);
 UNLOCK TABLES;
 
 COMMIT;
