@@ -145,16 +145,18 @@ CREATE TABLE `mst_user` (
   `date_created` datetime NOT NULL,
   `password` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `uk_username` (`username`),
+  UNIQUE KEY `uk_email` (`email`),
   KEY `idx_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 LOCK TABLES `mst_user` WRITE;
-INSERT INTO `mst_user` VALUES (1,1,'2021-09-02 12:18:20','$2a$14$gh4hfltUGwB315NieowSduN/jb6DQjBhMqsRx1YSS7YDNTrr8C/bC','dan'),
-								(2,1,'2021-09-02 12:18:22','$2a$14$VkFfuxZTTJzKc2B31PjHZeNwz.znGgUqh03UWY4fVDE0Fq7ffnc42','anirban'),
-								(3,1,'2021-09-02 12:18:24','$2a$14$qUEha8IlzRzCqu0M6XNmsOFW3O1Q2tggjg3nrvYXeiKXUMU51pTha','admin'),
-								(4,1,'2021-09-02 12:18:26','$2a$14$E16Hc0v6miF2wtZ22IXSUOHT1cSzWycCvnprgVJrPC3087XXJV7Vi','manager'),
-								(5,1,'2021-09-08 10:56:44','$2a$14$gh4hfltUGwB315NieowSduxn/JACaGJqdyclsSIjYmN95p596qgP6','Anoushka');
+INSERT INTO `mst_user` VALUES (1,1,'2021-09-02 12:18:20','$2a$14$gh4hfltUGwB315NieowSduN/jb6DQjBhMqsRx1YSS7YDNTrr8C/bC','dan','dan@gmail.com'),
+								(2,1,'2021-09-02 12:18:22','$2a$14$VkFfuxZTTJzKc2B31PjHZeNwz.znGgUqh03UWY4fVDE0Fq7ffnc42','anirban','anirban@gmail.com'),
+								(3,1,'2021-09-02 12:18:24','$2a$14$qUEha8IlzRzCqu0M6XNmsOFW3O1Q2tggjg3nrvYXeiKXUMU51pTha','admin','admin@gmail.com'),
+								(4,1,'2021-09-02 12:18:26','$2a$14$E16Hc0v6miF2wtZ22IXSUOHT1cSzWycCvnprgVJrPC3087XXJV7Vi','manager','manager@gmail.com'),
+								(5,1,'2021-09-08 10:56:44','$2a$14$gh4hfltUGwB315NieowSduxn/JACaGJqdyclsSIjYmN95p596qgP6','Anoushka','anoushka@gmail.com');
 UNLOCK TABLES;
 
 /*--- user_permission table ---*/
