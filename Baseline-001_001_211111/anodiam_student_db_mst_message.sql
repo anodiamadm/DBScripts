@@ -39,7 +39,17 @@ CREATE TABLE `mst_message` (
 
 LOCK TABLES `mst_message` WRITE;
 /*!40000 ALTER TABLE `mst_message` DISABLE KEYS */;
-INSERT INTO `mst_message` VALUES (1,1,'STUDENT_SAVE_SUCCESS','Student registration successful!'),(2,1,'STUDENT_USERNAME_MIN_LENGTH','Student registration failure! Username should be 8 + chars long!'),(3,1,'STUDENT_DUPLICATE_USERNAME','This username is already taken by another user. Please try some other username.'),(4,1,'STUDENT_PASSWORD_MIN_LENGTH','Student registration failure! Invalid password. Password should be 8 to 20 characters long.'),(5,1,'STUDENT_PASSWORD_MAX_LENGTH','Student registration failure! Invalid password. Password should be 8 to 20 characters long.'),(6,1,'STUDENT_PASSWORD_CONTAIN_USERNAME','Student registration failure! Invalid password. Password should not contain your username.'),(7,1,'STUDENT_INVALID_PASSWORD','Student registration failure! Invalid password.Must contain at least one small alphabet (a-z), at least one capital alphabet (A-Z),at least one numeric (0-9) and at least one special character among (@,#,$,%,^,&,+,=)'),(8,1,'STUDENT_INVALID_EMAIL_ADDRESS','Student registration failure! Invalid email address.'),(9,1,'STUDENT_DUPLICATE_EMAIL_ADDRESS','Student registration failure! An user with the same email address is already registered.'),(10,1,'STUDENT_USERNAME_BLANK','Student registration failure! User name cannot be blank.');
+INSERT INTO `mst_message` VALUES 
+(1,1,'STUDENT_SAVE_SUCCESS','Student registration successful!'),
+(2,1,'STUDENT_USERNAME_MIN_LENGTH','Student registration failure! Username should be 8 or more characters long.'),
+(3,1,'STUDENT_DUPLICATE_USERNAME','Student registration failure! This username is already taken by another user. Please try some other username.'),
+(4,1,'STUDENT_PASSWORD_MIN_LENGTH','Student registration failure! Invalid password. Password should be 8 to 20 characters long.'),
+(5,1,'STUDENT_PASSWORD_MAX_LENGTH','Student registration failure! Invalid password. Password should be 8 to 20 characters long.'),
+(6,1,'STUDENT_PASSWORD_CONTAIN_USERNAME','Student registration failure! Invalid password. Password should not contain your username.'),
+(7,1,'STUDENT_INVALID_PASSWORD','Student registration failure! Invalid password. Password must contain at least one small alphabet (a-z), at least one capital alphabet (A-Z),at least one numeric (0-9) and at least one special character among (@,#,$,%,^,&,+,=)'),
+(8,1,'STUDENT_INVALID_EMAIL_ADDRESS','Student registration failure! Invalid email address.'),
+(9,1,'STUDENT_DUPLICATE_EMAIL_ADDRESS','Student registration failure! An user with the same email address is already registered.'),
+(10,1,'STUDENT_USERNAME_BLANK','Student registration failure! User name cannot be blank.');
 /*!40000 ALTER TABLE `mst_message` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
