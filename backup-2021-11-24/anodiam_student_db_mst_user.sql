@@ -1,0 +1,58 @@
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: anodiam_student_db
+-- ------------------------------------------------------
+-- Server version	8.0.22
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `mst_user`
+--
+
+DROP TABLE IF EXISTS `mst_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mst_user` (
+  `user_id` bigint NOT NULL AUTO_INCREMENT,
+  `active` int NOT NULL,
+  `date_created` datetime NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `uk_username` (`username`),
+  UNIQUE KEY `uk_email` (`email`),
+  KEY `idx_username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mst_user`
+--
+
+LOCK TABLES `mst_user` WRITE;
+/*!40000 ALTER TABLE `mst_user` DISABLE KEYS */;
+INSERT INTO `mst_user` VALUES (9,1,'2021-11-15 18:01:50','$2a$14$gh4hfltUGwB315NieowSdu0BiV0jbUhkyoTs/QEtoTCCwKzjIg1Fm','wlR44aNwRejuDDHex+uGJQ==','5wLmCga0upOu7bQRWYkBVw=='),(10,1,'2021-11-18 11:52:22','$2a$14$gh4hfltUGwB315NieowSduUYCNocPv9oS8.G27.2Fq9TH0gK.kGU6','DLk3QtQGWZ4jfEl14unhvA==','YNl8MhKIsaIPgG80sUW1yl7DhAWvUaIt'),(11,1,'2021-11-21 11:06:57','$2a$14$x3FvRJhq5/DPDvIKXoEdCui.ageGUFfAbPhXk6/OQ6sUYhJ3hCAnC','OQGfmMaNDtp1cViuu7ThiQ==','OgEklHJG8SIO2oTX/gkp6VbeSMmd4vu0'),(12,1,'2021-11-21 11:06:59','$2a$14$sdsBQbjpRC6GT1QBrrSp9eMEkOIKlG2IZ42UfUX7JBE6JSpEEjMCa','IsVs6sKey2s4AXMnC2PnRA==','AAjlV9rGGDkO2oTX/gkp6VbeSMmd4vu0'),(13,1,'2021-11-21 11:07:00','$2a$14$r/sVPnYUZFG7upwaKsc.buGvfYTOdSsyOsGP8ZhjJi2EXxfRHossm','3Dtl9TPyIu206Z1h0mz/Pg==','TurE3P8RAKoGxgNAy+EsPIklKlCX19Qm'),(14,1,'2021-11-21 11:31:44','$2a$14$x3FvRJhq5/DPDvIKXoEdCui.ageGUFfAbPhXk6/OQ6sUYhJ3hCAnC','9RVKb5r785UH48BA7CXKwQ==','iaPndUTcAiMO2oTX/gkp6VbeSMmd4vu0'),(15,1,'2021-11-21 11:31:45','$2a$14$sdsBQbjpRC6GT1QBrrSp9eMEkOIKlG2IZ42UfUX7JBE6JSpEEjMCa','QWHNN5JIacwFO+7yavRG4A==','5cFDjUS/3xMO2oTX/gkp6VbeSMmd4vu0'),(16,1,'2021-11-21 11:37:26','$2a$14$x3FvRJhq5/DPDvIKXoEdCui.ageGUFfAbPhXk6/OQ6sUYhJ3hCAnC','IeLvGbj3PpRdiiHEWa6YXw==','WHr1+/W0xaUO2oTX/gkp6VbeSMmd4vu0'),(17,1,'2021-11-21 11:37:27','$2a$14$sdsBQbjpRC6GT1QBrrSp9eMEkOIKlG2IZ42UfUX7JBE6JSpEEjMCa','GAYsrFM+CYQ873OtYBmzuQ==','ZkKzEgyH06MO2oTX/gkp6VbeSMmd4vu0'),(18,1,'2021-11-21 20:19:08','$2a$14$x3FvRJhq5/DPDvIKXoEdCui.ageGUFfAbPhXk6/OQ6sUYhJ3hCAnC','O1KJi7DLAotfEY8cAo4rhg==','F9q/qdG84pgO2oTX/gkp6VbeSMmd4vu0'),(19,1,'2021-11-21 20:19:09','$2a$14$sdsBQbjpRC6GT1QBrrSp9eMEkOIKlG2IZ42UfUX7JBE6JSpEEjMCa','4PGEExzKkYLC7usW0CqRQQ==','jZ8gIr2kzQoO2oTX/gkp6VbeSMmd4vu0'),(20,1,'2021-11-22 20:17:05','$2a$14$gh4hfltUGwB315NieowSdudEPMXLdn6ulH4NbCs/cMVk1Gx4Z6rJC','PnbeSneVCw+SrV1B0HygXw==','jUubhqA0/x4GxgNAy+EsPIklKlCX19Qm'),(21,1,'2021-11-22 20:18:18','$2a$14$VkFfuxZTTJzKc2B31PjHZe6FIvE1DYACfo0.SFxdYWqHMIAejyh.6','awBRPiCneAcZ708Rg0HK4A==','snkFiLEBYEAGxgNAy+EsPIklKlCX19Qm');
+/*!40000 ALTER TABLE `mst_user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-11-24 17:43:39
