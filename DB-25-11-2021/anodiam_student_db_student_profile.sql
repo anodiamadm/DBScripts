@@ -61,11 +61,11 @@ CREATE TABLE `student_profile` (
 -- Dumping data for table `student_profile`
 --
 
-LOCK TABLES `student_profile` WRITE;
+/* LOCK TABLES `student_profile` WRITE; */
 /*!40000 ALTER TABLE `student_profile` DISABLE KEYS */;
-INSERT INTO `student_profile` VALUES (17,'Praveen Kumar Rao','67890-32416','Konark Apt,Flat No-A1,V-31,Vivekananda Sarani,Garia,Kolkata-700084',23456.78904,8790.6543,'Naven kumar','naveen@gmail.com','42671-89244',1,1,1,'abcde',24,1);
+/* INSERT INTO `student_profile` VALUES (17,'Praveen Kumar Rao','67890-32416','Konark Apt,Flat No-A1,V-31,Vivekananda Sarani,Garia,Kolkata-700084',23.45678904,87.906543,'Naven kumar','naveen@gmail.com','42671-89244',1,1,1,'abcde',24,1); */
 /*!40000 ALTER TABLE `student_profile` ENABLE KEYS */;
-UNLOCK TABLES;
+/* UNLOCK TABLES; */
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
