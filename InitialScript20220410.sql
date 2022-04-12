@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS anodiam_student;
+CREATE DATABASE anodiam_student;
+USE anodiam_student;
 CREATE TABLE `mst_board` (
   `board_id` bigint NOT NULL AUTO_INCREMENT,
   `board_code` varchar(255) NOT NULL,
