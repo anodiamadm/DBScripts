@@ -27,6 +27,19 @@ CREATE TABLE `mst_level` (
 LOCK TABLES `mst_level` WRITE;
 INSERT INTO `mst_level` VALUES (1,'KG','Kinder Garten'),(2,'I','1'),(3,'II','2'),(4,'III','3'),(5,'IV','4'),(6,'V','5'),(7,'VI','6'),(8,'VII','7'),(9,'VIII','8'),(10,'IX','9'),(11,'X','10'),(12,'XI','11'),(13,'XII','12'),(14,'OTH','Other');
 UNLOCK TABLES;
+CREATE TABLE `mst_subject` (
+  `subject_id` bigint NOT NULL AUTO_INCREMENT,
+  `subject_code` varchar(255) NOT NULL,
+  `subject_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`subject_id`),
+  UNIQUE KEY `uk_subject_code` (`subject_code`),
+  UNIQUE KEY `uk_subject_name` (`subject_name`),
+  KEY `idx_subject_code` (`subject_code`),
+  KEY `idx_subject_name` (`subject_name`)
+);
+LOCK TABLES `mst_subject` WRITE;
+INSERT INTO `mst_subject` VALUES (1,'ENG','English'),(2,'MATH','Mathematics'),(3,'PHY','Physics'),(4,'CHEM','Chemistry'),(5,'BIO','Biology'),(6,'COMP','Computers'),(7,'OTH','Others');
+UNLOCK TABLES;
 CREATE TABLE `mst_permission` (
   `permission_id` bigint NOT NULL AUTO_INCREMENT,
   `permission_name` varchar(255) DEFAULT NULL,
