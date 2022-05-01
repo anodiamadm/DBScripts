@@ -69,6 +69,39 @@ CREATE TABLE `mst_user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `uk_username` (`username`)
 );
+LOCK TABLES `mst_user` WRITE;
+insert into `mst_user` values (1, 1, now(), '$2a$14$eOb6p8z00qRqAlJ7bpPT..6roaA9XBBpd/NdtnEAuJYTjTsA4WWFm', 'pinaki.sen@gmail.com');
+insert into `mst_user` values (2, 1, now(), '$2a$14$eOb6p8z00qRqAlJ7bpPT..6roaA9XBBpd/NdtnEAuJYTjTsA4WWFm', 'anindita@gmail.com');
+insert into `mst_user` values (3, 1, now(), '$2a$14$eOb6p8z00qRqAlJ7bpPT..6roaA9XBBpd/NdtnEAuJYTjTsA4WWFm', 'mala.das@gmail.com');
+UNLOCK TABLES;
+CREATE TABLE `user_permission` (
+  `user_id` bigint NOT NULL,
+  `permission_id` bigint NOT NULL,
+  PRIMARY KEY (`user_id`,`permission_id`),
+  KEY `FK_permission_id` (`permission_id`),
+  KEY `FK_user_id` (`user_id`),
+  CONSTRAINT `FK_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `mst_permission` (`permission_id`),
+  CONSTRAINT `FK_user_id` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`)
+);
+LOCK TABLES `user_permission` WRITE;
+insert into `user_permission` values (1, 1);
+insert into `user_permission` values (2, 1);
+insert into `user_permission` values (3, 1);
+UNLOCK TABLES;
+CREATE TABLE `user_role` (
+  `user_id` bigint NOT NULL,
+  `role_id` bigint NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`),
+  KEY `FK_role_id` (`role_id`),
+  KEY `FK_user_id_02` (`user_id`),
+  CONSTRAINT `FK_role_id` FOREIGN KEY (`role_id`) REFERENCES `mst_role` (`role_id`),
+  CONSTRAINT `FK_user_id_02` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`)
+);
+LOCK TABLES `user_role` WRITE;
+insert into `user_role` values (1, 1);
+insert into `user_role` values (2, 1);
+insert into `user_role` values (3, 1);
+UNLOCK TABLES;
 CREATE TABLE `student_profile` (
   `student_profile_id` bigint NOT NULL AUTO_INCREMENT,
   `full_name` varchar(255) DEFAULT NULL,
@@ -84,22 +117,8 @@ CREATE TABLE `student_profile` (
   CONSTRAINT `FK_level_id` FOREIGN KEY (`level_id`) REFERENCES `mst_level` (`level_id`),
   CONSTRAINT `FK_student_user_id` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`)
 );
-CREATE TABLE `user_permission` (
-  `user_id` bigint NOT NULL,
-  `permission_id` bigint NOT NULL,
-  PRIMARY KEY (`user_id`,`permission_id`),
-  KEY `FK_permission_id` (`permission_id`),
-  KEY `FK_user_id` (`user_id`),
-  CONSTRAINT `FK_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `mst_permission` (`permission_id`),
-  CONSTRAINT `FK_user_id` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`)
-);
-CREATE TABLE `user_role` (
-  `user_id` bigint NOT NULL,
-  `role_id` bigint NOT NULL,
-  PRIMARY KEY (`user_id`,`role_id`),
-  KEY `FK_role_id` (`role_id`),
-  KEY `FK_user_id_02` (`user_id`),
-  CONSTRAINT `FK_role_id` FOREIGN KEY (`role_id`) REFERENCES `mst_role` (`role_id`),
-  CONSTRAINT `FK_user_id_02` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`)
-);
+LOCK TABLES `student_profile` WRITE;
+insert into `student_profile` values (1, 'Pinaki Sen', 2, 11, 1);
+insert into `student_profile` values (2, 'Anindita Roy', 1, 12, 2);
+UNLOCK TABLES;
 commit;
