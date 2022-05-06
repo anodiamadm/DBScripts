@@ -118,7 +118,6 @@ CREATE TABLE `student_profile` (
   CONSTRAINT `FK_student_user_id` FOREIGN KEY (`user_id`) REFERENCES `mst_user` (`user_id`)
 );
 LOCK TABLES `student_profile` WRITE;
-insert into `student_profile` values (1, 'Pinaki Sen', 2, 11, 1);
-insert into `student_profile` values (2, 'Anindita Roy', 1, 12, 2);
+insert into `student_profile` values (1, 'Pinaki Sen', 2, 11, 1), (2, 'Anindita Roy', 1, 12, 2);
 UNLOCK TABLES;
 commit;
