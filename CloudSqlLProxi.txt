@@ -1,1 +1,1 @@
-D:\Anodiam>.\cloud_sql_proxy.exe -instances=anodiam-dev:us-central1:anodiammysql=tcp:3306
+D:\Anodiam>.\cloud_sql_proxy.exe -instances=anodiam-dev-352103:us-central1:anodiammysql=tcp:3306
