@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudsql-proxy
+  labels:
+    type: gcp-auth-proxy
 spec:
   replicas: 3
   template:
@@ -26,4 +28,7 @@ spec:
             secretName: cloudsql-instance-credentials
         - name: cloudsql
           emptyDir:
-            
+  selector:
+    matchLabels:
+      app: cloudsql-proxy
+      unit: mycloudsql
