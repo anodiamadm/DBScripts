@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cloudsql-proxy
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: cloudsql-proxy
+        unit: mycloudsql
+    spec:
+      containers:
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.11
+          command: ["/cloud_sql_proxy",
+                "-instances=anodiam-dev-352103:us-central1:anodiammysql=tcp:0.0.0.0:3306",
+                "-credential_file=/secrets/cloudsql/anodiam-dev-352103-25dc47558fa2.json"]
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+        - name: cloudsql-instance-credentials
+          secret:
+            secretName: cloudsql-instance-credentials
+        - name: cloudsql
+          emptyDir:
+            
