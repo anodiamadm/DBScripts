@@ -1,5 +1,7 @@
 DROP DATABASE IF EXISTS anodiamstudent;
 CREATE DATABASE anodiamstudent;
+create user 'anodiam_user'@'%' identified by 'Anodiam@123';
+GRANT ALL PRIVILEGES ON anodiamstudent.* TO 'anodiam_user'@'%';
 USE anodiamstudent;
 CREATE TABLE `mst_board` (
   `board_id` bigint NOT NULL AUTO_INCREMENT,
